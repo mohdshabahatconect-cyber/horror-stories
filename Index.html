@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DarkTales | Horror Stories</title>
+
+<meta name="description"
+content="DarkTales - Read terrifying horror stories, ghost stories, haunted house stories and urban legends.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#eee;
+    font-family:Inter,Arial,sans-serif;
+    line-height:1.6;
+}
+
+/* ---------- HEADER ---------- */
+
+header{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px 20px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at center,#300000 0%,#100000 28%,#050505 65%);
+}
+
+header::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 30%,rgba(255,0,0,.08),transparent 25%),
+        radial-gradient(circle at 80% 70%,rgba(255,0,0,.06),transparent 25%);
+    animation:pulse 5s infinite alternate;
+}
+
+@keyframes pulse{
+    from{opacity:.4}
+    to{opacity:1}
+}
+
+.hero{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+}
+
+.logo{
+    font-family:Creepster,cursive;
+    font-size:clamp(70px,12vw,150px);
+    color:#b30000;
+    letter-spacing:5px;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 30px #700000,
+        0 5px 20px #000;
+}
+
+.hero h2{
+    font-size:clamp(18px,3vw,30px);
+    margin:10px 0 20px;
+    color:#ddd;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#999;
+}
+
+.enter-btn{
+    display:inline-block;
+    margin-top:35px;
+    padding:15px 35px;
+    border:1px solid #a00000;
+    background:#800000;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+    font-weight:700;
+    transition:.3s;
+    box-shadow:0 0 20px rgba(255,0,0,.15);
+}
+
+.enter-btn:hover{
+    background:#d00000;
+    box-shadow:0 0 35px rgba(255,0,0,.5);
+    transform:translateY(-3px);
+}
+
+/* ---------- NAV ---------- */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(5,5,5,.94);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #222;
+    padding:15px 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.nav-logo{
+    font-family:Creepster,cursive;
+    font-size:30px;
+    color:#c00000;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:#fff;
+}
+
+/* ---------- MAIN ---------- */
+
+main{
+    max-width:1200px;
+    margin:auto;
+    padding:70px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-family:Creepster,cursive;
+    font-size:55px;
+    color:#c00000;
+    letter-spacing:2px;
+}
+
+.section-title p{
+    color:#777;
+}
+
+/* ---------- SEARCH ---------- */
+
+.search-box{
+    max-width:700px;
+    margin:0 auto 25px;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:17px 20px;
+    background:#101010;
+    color:white;
+    border:1px solid #333;
+    border-radius:8px;
+    outline:none;
+    font-size:16px;
+}
+
+.search-box input:focus{
+    border-color:#900000;
+    box-shadow:0 0 15px rgba(180,0,0,.2);
+}
+
+/* ---------- FILTERS ---------- */
+
+.filters{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+
+.filter{
+    border:1px solid #333;
+    background:#111;
+    color:#aaa;
+    padding:9px 18px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.filter:hover,
+.filter.active{
+    background:#850000;
+    color:#fff;
+    border-color:#a00000;
+}
+
+/* ---------- CARDS ---------- */
+
+.stories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;
+}
+
+.card{
+    background:linear-gradient(145deg,#111,#080808);
+    border:1px solid #222;
+    border-radius:12px;
+    padding:25px;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:#8b0000;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:#650000;
+    box-shadow:0 15px 40px rgba(0,0,0,.7);
+}
+
+.category{
+    display:inline-block;
+    font-size:11px;
+    color:#ff4b4b;
+    border:1px solid #4d0000;
+    padding:4px 9px;
+    border-radius:20px;
+    margin-bottom:15px;
+    text-transform:uppercase;
+}
+
+.card h3{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#888;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.read-btn{
+    background:#700000;
+    border:0;
+    color:#fff;
+    padding:10px 18px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.read-btn:hover{
+    background:#b00000;
+}
+
+/* ---------- MODAL ---------- */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.9);
+    z-index:999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-content{
+    width:min(800px,100%);
+    max-height:90vh;
+    overflow-y:auto;
+    background:#0d0d0d;
+    border:1px solid #500000;
+    border-radius:12px;
+    padding:35px;
+    position:relative;
+    box-shadow:0 0 60px rgba(100,0,0,.4);
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:15px;
+    font-size:30px;
+    cursor:pointer;
+    color:#777;
+}
+
+.close:hover{
+    color:#fff;
+}
+
+.modal-content h2{
+    font-family:Creepster,cursive;
+    font-size:45px;
+    color:#c00000;
+    margin-bottom:20px;
+}
+
+.story-text{
+    color:#bbb;
+    white-space:pre-line;
+    font-size:16px;
+}
+
+/* ---------- ABOUT ---------- */
+
+.about{
+    margin-top:100px;
+    padding:40px;
+    text-align:center;
+    border:1px solid #222;
+    background:#0b0b0b;
+    border-radius:12px;
+}
+
+.about h2{
+    font-family:Creepster,cursive;
+    color:#b00000;
+    font-size:45px;
+}
+
+.about p{
+    color:#888;
+    max-width:700px;
+    margin:15px auto;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    border-top:1px solid #222;
+    color:#555;
+}
+
+footer span{
+    color:#9b0000;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:600px){
+
+    nav{
+        padding:12px 15px;
+    }
+
+    nav a{
+        margin-left:8px;
+        font-size:12px;
+    }
+
+    .logo{
+        letter-spacing:2px;
+    }
+
+    main{
+        padding:50px 15px;
+    }
+
+    .section-title h2{
+        font-size:45px;
+    }
+
+    .modal-content{
+        padding:25px 20px;
+    }
+
+    .modal-content h2{
+        font-size:36px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<header id="home">
+
+    <div class="hero">
+
+        <div class="logo">DarkTales</div>
+
+        <h2>Stories That Should Never Be Read Alone...</h2>
+
+        <p>
+            Enter a world of ghosts, haunted houses, cursed objects,
+            dark forests and terrifying urban legends.
+        </p>
+
+        <a href="#stories" class="enter-btn">
+            ENTER THE DARKNESS
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="nav-logo">DarkTales</div>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#stories">Stories</a>
+        <a href="#about">About</a>
+    </div>
+
+</nav>
+
+
+<!-- MAIN -->
+
+<main>
+
+<section id="stories">
+
+    <div class="section-title">
+
+        <h2>Horror Stories</h2>
+
+        <p>Choose a story... if you dare.</p>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search horror stories..."
+        >
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <button class="filter active" data-category="All">
+            All
+        </button>
+
+        <button class="filter" data-category="Ghost">
+            Ghost
+        </button>
+
+        <button class="filter" data-category="Haunted House">
+            Haunted House
+        </button>
+
+        <button class="filter" data-category="Urban Legend">
+            Urban Legend
+        </button>
+
+        <button class="filter" data-category="Psychological">
+            Psychological
+        </button>
+
+    </div>
+
+
+    <!-- STORY CARDS -->
+
+    <div class="stories" id="storyContainer"></div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about" class="about">
+
+    <h2>About DarkTales</h2>
+
+    <p>
+        DarkTales is a fictional horror-story website created for
+        readers who enjoy ghosts, mysteries, paranormal events,
+        urban legends and psychological horror.
+    </p>
+
+    <p>
+        Turn off the lights. Put on your headphones.
+        And remember...
+        <strong>some stories are better left unfinished.</strong>
+    </p>
+
+</section>
+
+</main>
+
+
+<!-- STORY MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <span class="close" id="close">&times;</span>
+
+        <h2 id="modalTitle"></h2>
+
+        <div class="story-text" id="modalStory"></div>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 <span>DarkTales</span> —
+    Enter at your own risk.
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   HORROR STORIES
+========================================= */
+
+const stories = [
+
+{
+    title:"The Last Room",
+    category:"Haunted House",
+    excerpt:"Room 307 had been locked for twenty years. Nobody knew why.",
+    content:`
+The hotel manager gave me the key to Room 307.
+
+"Nobody uses that room," he said.
+
+I laughed.
+
+The room looked completely normal.
+
+A bed.
+A mirror.
+A small wooden table.
+
+At 3:07 AM, I heard three knocks.
+
+Knock.
+
+Knock.
+
+Knock.
+
+I opened the door.
+
+Nobody was there.
+
+When I came back inside, the mirror had something written on it.
+
+RUN.
+
+I wiped the word away.
+
+Another message appeared.
+
+HE IS BEHIND YOU.
+
+I turned around.
+
+There was nothing.
+
+Then I heard breathing coming from underneath the bed.
+
+Slowly...
+
+I looked down.
+
+Two pale eyes were staring back at me.
+
+The next morning, Room 307 was locked again.
+
+The hotel manager said the same thing he had said twenty years ago:
+
+"Nobody uses that room."
+`
+},
+
+{
+    title:"The Woman In The Window",
+    category:"Ghost",
+    excerpt:"Every night at exactly midnight, she appeared in the window.",
+    content:`
+Every night at midnight, I saw a woman standing in the window
+of the abandoned house across the street.
+
+She wore a white dress.
+
+She never moved.
+
+One night, I decided to take a picture.
+
+I raised my phone.
+
+The woman disappeared.
+
+I checked the photograph.
+
+She was standing behind me.
+
+I turned around.
+
+Nothing.
+
+Then my phone received a notification.
+
+A new photograph had been added to my gallery.
+
+It showed me sleeping in my bedroom.
+
+The timestamp was tomorrow.
+
+I didn't sleep that night.
+
+At exactly midnight, someone knocked on my bedroom window.
+
+I live on the seventh floor.
+`
+},
+
+{
+    title:"The Forest Doesn't Sleep",
+    category:"Urban Legend",
+    excerpt:"The villagers said never to enter the forest after sunset.",
+    content:`
+My grandfather always warned me about the Black Forest.
+
+"Never enter after sunset."
+
+I didn't believe him.
+
+One evening, I walked inside.
+
+The forest became completely silent.
+
+No birds.
+
+No insects.
+
+Not even the sound of wind.
+
+Then I heard footsteps behind me.
+
+I walked faster.
+
+The footsteps walked faster.
+
+I ran.
+
+The footsteps ran.
+
+Finally, I reached the road.
+
+I turned around.
+
+Nobody was there.
+
+But my grandfather was standing inside the forest.
+
+He was looking at me.
+
+He had died fifteen years ago.
+
+He smiled and whispered:
+
+"You finally came back."
+`
+},
+
+{
+    title:"Don't Answer The Phone",
+    category:"Psychological",
+    excerpt:"The phone rang every night. The caller always knew what he was doing.",
+    content:`
+My phone rang at 2:13 AM.
+
+Unknown Number.
+
+I ignored it.
+
+The next night, it rang again.
+
+2:13 AM.
+
+This time I answered.
+
+There was silence.
+
+Then a voice whispered:
+
+"Don't look behind you."
+
+I froze.
+
+My bedroom was completely silent.
+
+I slowly looked at the mirror.
+
+There was someone standing behind me.
+
+I turned around.
+
+Nobody.
+
+The phone was still connected.
+
+The voice whispered:
+
+"I'm not behind you."
+
+A pause.
+
+"I'm inside your phone."
+
+The screen went black.
+
+Then the phone rang again.
+
+2:13 AM.
+
+But this time...
+
+the call was coming from my own number.
+`
+},
+
+{
+    title:"The Empty Train",
+    category:"Ghost",
+    excerpt:"The last train had one passenger too many.",
+    content:`
+I was waiting for the last train.
+
+11:59 PM.
+
+The station was empty.
+
+A train arrived without making a sound.
+
+I entered.
+
+There was one passenger sitting at the end of the carriage.
+
+An old man.
+
+He looked at me and said:
+
+"You shouldn't be here."
+
+I laughed nervously.
+
+The train started moving.
+
+After ten minutes, I noticed something strange.
+
+The train wasn't stopping.
+
+The old man looked at me again.
+
+"Did you check the date?"
+
+I checked my phone.
+
+October 13, 1998.
+
+My phone had been working perfectly five minutes earlier.
+
+The old man disappeared.
+
+Then the train lights went out.
+`
+},
+
+{
+    title:"The House That Watches",
+    category:"Haunted House",
+    excerpt:"The house wasn't haunted. It was alive.",
+    content:`
+When I bought the house, the previous owner gave me one warning.
+
+"Never close the basement door."
+
+I thought it was a joke.
+
+For the first few days, everything was normal.
+
+Then the house started making noises.
+
+Footsteps.
+
+Whispers.
+
+Knocking inside the walls.
+
+One night, I closed the basement door.
+
+The entire house went silent.
+
+Then every door in the house opened at once.
+
+The lights turned on.
+
+And a voice came from the basement:
+
+"Why did you lock me out?"
+
+The house wasn't haunted.
+
+The house was alive.
+
+And I had just made it angry.
+`
+}
+
+];
+
+
+/* =========================================
+   DISPLAY STORIES
+========================================= */
+
+const container =
+    document.getElementById("storyContainer");
+
+function displayStories(list){
+
+    container.innerHTML = "";
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+            <p style="
+                grid-column:1/-1;
+                text-align:center;
+                color:#777;
+                padding:40px;
+            ">
+            No stories found...
+            </p>
+        `;
+
+        return;
+    }
+
+    list.forEach((story,index)=>{
+
+        const card = document.createElement("div");
+
+        card.className = "card";
+
+        card.innerHTML = `
+
+            <span class="category">
+                ${story.category}
+            </span>
+
+            <h3>
+                ${story.title}
+            </h3>
+
+            <p>
+                ${story.excerpt}
+            </p>
+
+            <button
+                class="read-btn"
+                onclick="openStory(${index})"
+            >
+                Read Story
+            </button>
+
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================================
+   OPEN STORY
+========================================= */
+
+const modal =
+    document.getElementById("modal");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalStory =
+    document.getElementById("modalStory");
+
+function openStory(index){
+
+    const story = stories[index];
+
+    modalTitle.textContent =
+        story.title;
+
+    modalStory.textContent =
+        story.content;
+
+    modal.classList.add("show");
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+
+/* =========================================
+   CLOSE MODAL
+========================================= */
+
+document
+.getElementById("close")
+.addEventListener("click",closeModal);
+
+modal.addEventListener("click",(e)=>{
+
+    if(e.target === modal){
+        closeModal();
+    }
+
+});
+
+function closeModal(){
+
+    modal.classList.remove("show");
+
+    document.body.style.overflow =
+        "auto";
+}
+
+
+/* =========================================
+   CATEGORY FILTER
+========================================= */
+
+const filters =
+    document.querySelectorAll(".filter");
+
+filters.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        filters.forEach(btn=>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        const category =
+            button.dataset.category;
+
+        if(category === "All"){
+
+            displayStories(stories);
+
+        }else{
+
+            displayStories(
+                stories.filter(
+                    story =>
+                    story.category === category
+                )
+            );
+
+        }
+
+    });
+
+});
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+document
+.getElementById("search")
+.addEventListener("input",(e)=>{
+
+    const query =
+        e.target.value.toLowerCase().trim();
+
+    const results =
+        stories.filter(story =>
+
+            story.title
+                .toLowerCase()
+                .includes(query)
+
+            ||
+
+            story.category
+                .toLowerCase()
+                .includes(query)
+
+            ||
+
+            story.excerpt
+                .toLowerCase()
+                .includes(query)
+
+        );
+
+    displayStories(results);
+
+});
+
+
+/* =========================================
+   ESCAPE KEY
+========================================= */
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key === "Escape"){
+        closeModal();
+    }
+
+});
+
+
+/* =========================================
+   START WEBSITE
+========================================= */
+
+displayStories(stories);
+
+</script>
+
+</body>
+</html>
